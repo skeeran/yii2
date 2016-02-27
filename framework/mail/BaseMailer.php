@@ -183,9 +183,15 @@ abstract class BaseMailer extends Component implements MailerInterface, ViewCont
 
         if (is_array($view)) {
             if (isset($view['html'])) {
+                if(isset($view['layout'])){
+                  $this->htmlLayout = $view['layout'];
+                }
                 $html = $this->render($view['html'], $params, $this->htmlLayout);
             }
             if (isset($view['text'])) {
+                if(isset($view['layout'])){
+                  $this->textLayout = $view['layout'];
+                }
                 $text = $this->render($view['text'], $params, $this->textLayout);
             }
         } else {
